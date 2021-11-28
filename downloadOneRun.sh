@@ -1,7 +1,7 @@
 #!/bin/sh
 # Pierre-Luc Germain, 28.11.2021, released under GPL-3
 
-if [ $# -eq 0 ] || [ $# -gt 2 ]; then
+if [ $# -eq 0 ] || [ $# -lt 2 ]; then
   echo "Downloads a SRA run specified by a SRR* id,"
   echo "first trying via EBI, otherwise fasterq-dump."
   echo "Works on SE/PE data, outputs fastq.gz files."
@@ -51,4 +51,18 @@ else
   if [ -d "$outdir/tmp" ]; then rm -r "$outdir/tmp"; fi
 fi
 
-echo "done in $(($SECONDS/60))min$(($SECONDS % 60))s"
+if !(ls $outdir/$id*.fastq.gz 1> /dev/null 2>&1); then
+  if [ -z "$3" ]; then
+    echo "Something went wrong, retrying..."
+    sleep 1
+    /bin/sh $0 $1 "$2" noretry
+  else
+    echo $id >> $outdir/failed.txt
+  fi
+fi
+
+if [ -z "$3" ]; then 
+  echo "done in $(($SECONDS/60))min$(($SECONDS % 60))s"
+fi
+
+
