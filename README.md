@@ -17,7 +17,7 @@ Requires awk, curl, pigz and fasterq-dump (form the [SRA tools](https://github.c
 
 ## Output
 
-For each SRA Experiment, a folder will be created with both the SRX id and the GSM id (if any), containing the downloaded fastq files.
+For each SRA Experiment, a folder will be created with both the SRX id and the GSM id (if any), containing the downloaded fastq.gz files, e.g.: `SRXxxxx.GSMxxxx/SRRxxxx_1.fastq.gz`, `SRXxxxx.GSMxxxx/SRRxxxx_2.fastq.gz`, etc.
 
 ## Notes/disclaimers
 
