@@ -18,8 +18,9 @@ Requires awk, curl, pigz and fasterq-dump (form the [SRA tools](https://github.c
 
 For each SRA Experiment, a folder will be created with both the SRX id and the GSM id (if any), containing the downloaded fastq files.
 
-## Notes/caveats
+## Notes/disclaimers
 
 - When falling back to fasterq-dump, depending on your configs the prefetch might be saved in `~/ncbi/public/sra/`, which will accumulate and become rather big...
 - At the moment, some experiments fail a certain proportion of the time (not sure why). These result in empty folders. However, you can simply delete those folders and launch the script again, it will skip the experiments for which a folder is already present and try again the missing ones. This also means that multiple instances of the script can be launched on the same table and output dir.
-- By default, two curl runs will be executed in parallel for paired-end files, and a maximum of 4 threads will be used when downloading via fasterq-dump. This can be changed at the top of the [downloadOneRun.sh](downloadOneRun.sh#L18) file.
+- By default, two curl runs will be executed in parallel for paired-end files, and a maximum of 4 threads will be used when downloading via fasterq-dump. This can be changed at the top of the [downloadOneRun.sh](downloadOneRun.sh#L19) file.
+- Developed using bash under unbutu, can't guarantee portability to other systems, or guarantee anything, for that matter.
