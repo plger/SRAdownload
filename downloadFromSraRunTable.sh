@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+# Pierre-Luc Germain, 28.11.2021, released under GPL-3
 
 runtable=${1:-SraRunTable.txt}
 outdir=${2:-.}
@@ -9,7 +10,7 @@ if [[ ! -r "$runtable" ]]; then
   echo "This downloads the SRA runs specified in the SraRunTable.txt."
   echo "To get such a table, use the SRA run selector:"
   echo "https://www.ncbi.nlm.nih.gov/Traces/study/"
-  echo "(Requires awk, pigz, curl and fasterq-dump)"
+  echo "(See https://github.com/plger/SRAdownload )"
   exit
 fi
 
@@ -61,7 +62,7 @@ do
     echo $name
     mkdir $name
     for SRR in `echo $runs | tr "," "\n"`; do
-      bash `dirname $0`/downloadOneRun.sh "$SRR" "$outdir/$name"
+      /bin/sh `dirname $0`/downloadOneRun.sh "$SRR" "$outdir/$name"
     done
   fi
 done 9< $tmpfile
