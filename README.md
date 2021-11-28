@@ -1,6 +1,7 @@
 # SRAdownload
 
 Bash scripts to download fastq files from the SRA, with priority to european servers, grouping runs from the same experiments.
+
 Since the NCBI servers are very slow (at least accessed from Europe), this first tries to download the fastq files directly from the ftp.sra.ebi.ac.uk server.
 However, not all runs are available on that server; therefore, when not available the script falls back to fasterq-dump.
 
