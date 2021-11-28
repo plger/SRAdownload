@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+# Pierre-Luc Germain, 28.11.2021, released under GPL-3
 
 if [ $# -eq 0 ] || [ $# -gt 2 ]; then
   echo "Downloads a SRA run specified by a SRR* id,"
