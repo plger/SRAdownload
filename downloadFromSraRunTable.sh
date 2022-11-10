@@ -4,7 +4,7 @@
 runtable=${1:-SraRunTable.txt}
 outdir=${2:-.}
 
-if [[ ! -r "$runtable" ]]; then
+if [ ! -r "$runtable" ]; then
   echo "Could not read run table."
   echo "Usage: `basename $0` SraRunTable.txt [output_directory]"
   echo "This downloads the SRA runs specified in the SraRunTable.txt."
@@ -14,7 +14,7 @@ if [[ ! -r "$runtable" ]]; then
   exit
 fi
 
-if [ ! -w "/path/to/dir" ]; then
+if [ ! -w "$outdir" ]; then
   echo "Target output directory ($outdir) is not writable!"
   exit
 fi
