@@ -37,7 +37,7 @@ NR==1 {
     }else{
         print $expi"\t"$1
     }
-}' | sort | awk '
+}' $runtable | sort | awk '
 $1==x{
     printf ",%s", $2
     next
@@ -49,7 +49,7 @@ $1==x{
 }
 END {
     printf "\n"
-}' $runtable > $tmpfile
+}' > $tmpfile
 
 # we next proceed to download them
 while read -u 9 -r name runs
