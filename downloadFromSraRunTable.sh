@@ -62,7 +62,7 @@ do
     echo $name
     mkdir $name
     for SRR in `echo $runs | tr "," "\n"`; do
-      /bin/sh `dirname $0`/downloadOneRun.sh "$SRR" "$outdir/$name"
+      /bin/bash `dirname $0`/downloadOneRun.sh "$SRR" "$outdir/$name"
     done
   fi
 done 9< $tmpfile
